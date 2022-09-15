@@ -1,0 +1,316 @@
+import numpy as np
+import time
+import random
+from datetime import datetime
+import time
+import statistics
+import pandas as pd
+import decimal
+
+
+n = 100 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 10000)] #временные промежутки
+const = []
+for i in range (1, n):
+    a.append(((i*int(1000000/n)), (i+1)*int(1000000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        dim = random.randint(a[k][0], a[k][1])
+        b = np.random.random(dim) #генерация вектора случайных значений
+        start_time = datetime.now()
+        for l in range(dim):
+            b[l] = 1
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    const.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+
+pd.DataFrame(const).to_csv('/Users/syrchenari/Downloads/const.csv')
+
+
+
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 250)] #временные промежутки
+summa = []
+for i in range (1, n):
+    a.append(((i*int(5000/n)), (i+1)*int(5000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        b = np.random.random(random.randint(a[k][0], a[k][1])) #генерация вектора случайных значений
+        start_time = datetime.now()
+        b.sum()
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    summa.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+
+pd.DataFrame(summa).to_csv('/Users/syrchenari/Downloads/summa.csv')
+
+
+
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 250)] #временные промежутки
+production = []
+for i in range (1, n):
+    a.append(((i*int(5000/n)), (i+1)*int(5000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        b = np.random.random(random.randint(a[k][0], a[k][1])) #генерация вектора случайных значений
+        start_time = datetime.now()
+        b.prod()
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    production.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(production).to_csv('/Users/syrchenari/Downloads/production.csv')
+
+
+
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 250)] #временные промежутки
+poly = []
+for i in range (1, n):
+    a.append(((i*int(5000/n)), (i+1)*int(5000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        p = 0
+        dim = random.randint(a[k][0], a[k][1])
+        b = np.random.random(dim) #генерация вектора случайных значений
+        start_time = datetime.now()
+        for d in range(dim):
+            p = p + b[d]*(1.5**b[d])
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    poly.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(poly).to_csv('/Users/syrchenari/Downloads/poly.csv')
+
+
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 250)] #временные промежутки
+poly_gorner = []
+for i in range (1, n):
+    a.append(((i*int(5000/n)), (i+1)*int(5000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        p = 0
+        dim = random.randint(a[k][0], a[k][1])
+        b = np.random.random(dim) #генерация вектора случайных значений
+        start_time = datetime.now()
+        for d in range(0, dim):
+            p = p*1.5+b[d]
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    poly_gorner.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(poly_gorner).to_csv('/Users/syrchenari/Downloads/poly_gorner.csv')
+
+
+def bubbleSort(arr):
+    n = len(arr)
+    swapped = False
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j + 1]:
+                swapped = True
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+         
+        if not swapped:
+            return
+            
+
+
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 250)] #временные промежутки
+bubble = []
+for i in range (1, n):
+    a.append(((i*int(5000/n)), (i+1)*int(5000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        b = np.random.random(random.randint(a[k][0], a[k][1])) #генерация вектора случайных значений
+        start_time = datetime.now()
+        bubbleSort(b)
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    bubble.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(bubble).to_csv('/Users/syrchenari/Downloads/bubblesort.csv')
+
+
+
+ = 100 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 10000)] #временные промежутки
+quicks = []
+
+            
+for i in range (1, n):
+    a.append(((i*int(1000000/n)), (i+1)*int(1000000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        b = np.random.random(random.randint(a[k][0], a[k][1])) #генерация вектора случайных значений
+        start_time = datetime.now()
+        
+        def quicksort(b):
+            if len(b) <= 1:
+                return b
+            else:
+                q = random.choice(b)
+                L = []
+                M = []
+                R = []
+                for elem in b:
+                    if elem < q:
+                        L.append(elem) 
+                    elif elem > q: 
+                        R.append(elem) 
+                    else: 
+                        M.append(elem)
+                return QuickSort(L) + M + QuickSort(R)
+            
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    quicks.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(quicks).to_csv('/Users/syrchenari/Downloads/quicksort.csv')
+
+
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 250)] #временные промежутки
+timsort = []
+for i in range (1, n):
+    a.append(((i*int(5000/n)), (i+1)*int(5000/n)))
+    i = i+1
+
+for k in range(n):
+    for j in range(5):
+        b = np.random.random(random.randint(a[k][0], a[k][1])) #генерация вектора случайных значений
+        start_time = datetime.now()
+        tim_sort(b)
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    timsort.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(timsort).to_csv('/Users/syrchenari/Downloads/timsort.csv')
+
+
+
+
+MINIMUM= 32
+  
+def find_minrun(z): 
+  
+    r = 0
+    while z >= MINIMUM: 
+        r |= z & 1
+        z >>= 1
+    return z + r 
+  
+def insertion_sort(array, left, right): 
+    for y in range(left+1,right+1):
+        element = array[y]
+        x = y-1
+        while element<array[x] and x>=left :
+            array[x+1] = array[x]
+            x -= 1
+        array[x+1] = element
+    return array
+              
+def merge(array, v, w, r): 
+  
+    array_length1= w - v + 1
+    array_length2 = r - w 
+    left = []
+    right = []
+    for y in range(0, array_length1): 
+        left.append(array[v + y]) 
+    for y in range(0, array_length2): 
+        right.append(array[w + 1 + y]) 
+  
+    y=0
+    x=0
+    u=v
+   
+    while x < array_length2 and  y < array_length1: 
+        if left[y] <= right[x]: 
+            array[u] = left[y] 
+            y += 1
+  
+        else: 
+            array[u] = right[x] 
+            x += 1
+  
+        u += 1
+  
+    while y < array_length1: 
+        array[u] = left[y] 
+        u += 1
+        y += 1
+  
+    while x < array_length2: 
+        array[u] = right[x] 
+        u += 1
+        x += 1
+  
+def tim_sort(array): 
+    z = len(array) 
+    minrun = find_minrun(z) 
+  
+    for start in range(0, z, minrun): 
+        end = min(start + minrun - 1, z - 1) 
+        insertion_sort(array, start, end) 
+   
+    size = minrun 
+    while size < z: 
+  
+        for left in range(0, z, 2 * size): 
+  
+            mid = min(z - 1, left + size - 1) 
+            right = min((left + 2 * size - 1), (z - 1)) 
+            merge(array, left, mid, right) 
+  
+        size = 2 * size 
+        
+        
+        
+n = 20 # количество элементов
+c = [] #массив с медианами времени, сек
+a = [(0, 100)] #временные промежутки
+matrix_production = []
+for i in range (1, n):
+    a.append(((i*int(2000/n)), (i+1)*int(2000/n)))
+    i = i+1
+
+for k in range(n):
+    m = (random.randint(a[k][0], a[k][1]))
+    for j in range(5):
+        matrix1 = np.random.randint(0, 1000000, (m, m))
+        matrix2 = np.random.randint(0, 1000000, (m, m))
+        start_time = datetime.now()
+        matrix1.dot(matrix2)
+        finish_time = datetime.now()
+        c.append(finish_time - start_time)
+        j = j+1
+    matrix_production.append(((a[k][0], a[k][1]), statistics.median(c).total_seconds()))
+pd.DataFrame(matrix_production).to_csv('/Users/syrchenari/Downloads/matrix_production.csv')
